@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #passwordInput {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+            width: 200px;
+        }
+        #checkBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #checkBtn:hover {
+            background-color: #45a049;
+        }
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .green { color: green; font-size: 40px; }
+        .red { color: red; font-size: 24px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <input type="text" id="passwordInput" placeholder="Enter password" />
+    <button id="checkBtn">Check</button>
+    <div id="message" class="message"></div>
+</div>
+
+<script>
+    const correctPassword = "password123";
+    const checkBtn = document.getElementById('checkBtn');
+    const passwordInput = document.getElementById('passwordInput');
+    const message = document.getElementById('message');
+
+    checkBtn.addEventListener('click', () => {
+        const userInput = passwordInput.value;
+
+        if (userInput === correctPassword) {
+            document.body.innerHTML = '<div class="green">Correct!</div>';
+        } else {
+            message.textContent = "Wrong.";
+            message.className = 'message red';
+        }
+
+        passwordInput.value = '';
+    });
+</script>
+
+</body>
+</html>
